@@ -1,4 +1,12 @@
-vim.keymap.set('n', '<leader>;', vim.cmd.Ex)
+-- explorer
+vim.keymap.set('n', '<leader>;', '<cmd> Explore <CR>')
+
+-- quit
+vim.keymap.set('n', '<leader>q', '<cmd> q <CR>')
+-- save
+vim.keymap.set('n', '<leader>w', '<cmd> w <CR>')
+-- quit & save
+vim.keymap.set('n', '<leader>wq', '<cmd> wqa <CR>')
 
 -- move selected lines
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
@@ -19,6 +27,14 @@ vim.keymap.set('n', '<leader>Y', '"+Y')
 vim.keymap.set('n', '<leader>p', '"+p')
 vim.keymap.set('v', '<leader>p', '"+p')
 vim.keymap.set('n', '<leader>P', '"+P')
+
+-- splits
+vim.keymap.set('n', '<leader>S', '<cmd> split <CR>')
+vim.keymap.set('n', '<leader>V', '<cmd> vsplit <CR>')
+vim.keymap.set('n', '<leader>H', '<C-W>h')
+vim.keymap.set('n', '<leader>J', '<C-W>j')
+vim.keymap.set('n', '<leader>K', '<C-W>k')
+vim.keymap.set('n', '<leader>L', '<C-W>l')
 
 -- trouble plugin
 vim.keymap.set('n', '<leader>t', '<cmd> TroubleToggle <CR>')
