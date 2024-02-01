@@ -87,7 +87,7 @@ require('alpha').setup({
     -- {type = 'padding', val = 10,},
     -- rand_element(headers),
     -- {type = 'padding', val = 3,},
-    {type = 'text', opts = {position = 'center',}, val = 'Loaded theme: ' .. theme,},
+    -- {type = 'text', opts = {position = 'center',}, val = 'Loaded theme: ' .. theme,},
   },
 })
 

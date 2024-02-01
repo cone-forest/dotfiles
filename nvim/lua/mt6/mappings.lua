@@ -36,6 +36,14 @@ vim.keymap.set('n', '<leader>J', '<C-W>j')
 vim.keymap.set('n', '<leader>K', '<C-W>k')
 vim.keymap.set('n', '<leader>L', '<C-W>l')
 
+-- tmux
+vim.keymap.set('n', 'C-h', '<Cmd>NvimTmuxNavigateLeft<CR>')
+vim.keymap.set('n', '<C-j>', '<Cmd>NvimTmuxNavigateDown<CR>')
+vim.keymap.set('n', '<C-k>', '<Cmd>NvimTmuxNavigateUp<CR>')
+vim.keymap.set('n', '<C-l>', '<Cmd>NvimTmuxNavigateRight<CR>')
+vim.keymap.set('n', '<C-\\>', '<Cmd>NvimTmuxNavigateLastActive<CR>')
+vim.keymap.set('n', '<C-Space>', '<Cmd>NvimTmuxNavigateNext<CR>')
+
 -- trouble plugin
 vim.keymap.set('n', '<leader>t', '<cmd> TroubleToggle <CR>')
 

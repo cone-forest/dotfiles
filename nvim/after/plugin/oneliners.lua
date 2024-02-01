@@ -1,9 +1,10 @@
 vim.g.codeium_disable_bindings = true
 
 require("chatgpt").setup({})
+require('nvim-tmux-navigation').setup({})
 -- require("hologram").setup()
 
-require('asciiart').setup {
+require('asciiart').setup({
   render = {
     min_padding = 5,
     show_label = true,
@@ -14,7 +15,7 @@ require('asciiart').setup {
   events = {
     update_on_nvim_resize = true,
   },
-}
+})
 
 -- require("image").setup({
 --   backend = "ueberzug",

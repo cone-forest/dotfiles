@@ -89,4 +89,7 @@ return require('packer').startup(function(use)
   -- use {'3rd/image.nvim'}
   use {'m00qek/baleia.nvim'}
   use {'doctorfree/asciiart.nvim'}
+
+  -- tmux
+  use {'alexghergh/nvim-tmux-navigation'}
 end)
