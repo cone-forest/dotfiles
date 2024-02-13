@@ -19,7 +19,7 @@ gum spin --spinner $spinner_t --title "Installing git..." -- yay -S git --noconf
 gum spin --spinner $spinner_t --title "Installing neovim..." -- yay -S neovim --noconfirm > install.log
 
 # lua
-gum spin --spinner $spinner_t --title "Installing lua..." -- yay -S lua lua-language-server --noconfirm >> install.log
+gum spin --spinner $spinner_t --title "Installing lua..." -- yay -S lua luarocks lua-language-server --noconfirm >> install.log
 
 # c/cpp
 gum spin --spinner $spinner_t --title "Installing c/cpp tools..." -- yay -S llvm clang clangd lldb codelldb cmake cmake-language-server clang-format cmake-lint --noconfirm >> install.log
