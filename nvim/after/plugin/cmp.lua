@@ -62,19 +62,20 @@ cmp.setup.cmdline(':', {
 
 -- Set up lspconfig.
 local capabilities = require('cmp_nvim_lsp').default_capabilities()
+local lspconfig = require('lspconfig')
 
-require('lspconfig')['rust_analyzer'].setup {
+lspconfig['rust_analyzer'].setup {
   capabilities = capabilities,
 }
-require('lspconfig')['clangd'].setup {
+lspconfig['clangd'].setup {
   capabilities = capabilities
 }
-require('lspconfig')['pyright'].setup {
+lspconfig['pyright'].setup {
   capabilities = capabilities
 }
-require('lspconfig')['gopls'].setup {
+lspconfig['gopls'].setup {
   capabilities = capabilities
 }
-require('lspconfig')['lua_ls'].setup {
+lspconfig['lua_ls'].setup {
   capabilities = capabilities
 }

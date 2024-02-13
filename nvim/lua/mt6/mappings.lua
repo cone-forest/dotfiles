@@ -1,11 +1,9 @@
 -- explorer
 vim.keymap.set('n', '<leader>;', '<cmd> Explore <CR>')
 
--- quit
-vim.keymap.set('n', '<leader>q', '<cmd> q <CR>')
--- save
-vim.keymap.set('n', '<leader>w', '<cmd> w <CR>')
 -- quit & save
+vim.keymap.set('n', '<leader>q', '<cmd> q <CR>')
+vim.keymap.set('n', '<leader>w', '<cmd> w <CR>')
 vim.keymap.set('n', '<leader>wq', '<cmd> wqa <CR>')
 
 -- move selected lines
@@ -31,18 +29,19 @@ vim.keymap.set('n', '<leader>P', '"+P')
 -- splits
 vim.keymap.set('n', '<leader>S', '<cmd> split <CR>')
 vim.keymap.set('n', '<leader>V', '<cmd> vsplit <CR>')
-vim.keymap.set('n', '<leader>H', '<C-W>h')
-vim.keymap.set('n', '<leader>J', '<C-W>j')
-vim.keymap.set('n', '<leader>K', '<C-W>k')
-vim.keymap.set('n', '<leader>L', '<C-W>l')
 
 -- tmux
-vim.keymap.set('n', 'C-h', '<Cmd>NvimTmuxNavigateLeft<CR>')
+vim.keymap.set('n', '<C-h>', '<Cmd>NvimTmuxNavigateLeft<CR>')
 vim.keymap.set('n', '<C-j>', '<Cmd>NvimTmuxNavigateDown<CR>')
 vim.keymap.set('n', '<C-k>', '<Cmd>NvimTmuxNavigateUp<CR>')
 vim.keymap.set('n', '<C-l>', '<Cmd>NvimTmuxNavigateRight<CR>')
 vim.keymap.set('n', '<C-\\>', '<Cmd>NvimTmuxNavigateLastActive<CR>')
 vim.keymap.set('n', '<C-Space>', '<Cmd>NvimTmuxNavigateNext<CR>')
+
+-- telescope plugin
+vim.keymap.set('n', '<leader>ff', '<cmd> Telescope find_files <CR>')
+vim.keymap.set('n', '<leader>fs', '<cmd> Telescope live_grep <CR>')
+vim.keymap.set('n', '<leader>fc', '<cmd> Telescope colorscheme <CR>')
 
 -- trouble plugin
 vim.keymap.set('n', '<leader>t', '<cmd> TroubleToggle <CR>')
@@ -69,6 +68,3 @@ vim.keymap.set('n', '<leader>1', ':lua require("harpoon.ui").nav_file(1) <CR>')
 vim.keymap.set('n', '<leader>2', ':lua require("harpoon.ui").nav_file(2) <CR>')
 vim.keymap.set('n', '<leader>9', ':lua require("harpoon.ui").nav_file(3) <CR>')
 vim.keymap.set('n', '<leader>0', ':lua require("harpoon.ui").nav_file(4) <CR>')
-
-vim.keymap.set('n', '<leader>n', ':lua require("harpoon.ui").nav_next() <CR>')
-vim.keymap.set('n', '<leader>N', ':lua require("harpoon.ui").nav_prev() <CR>')

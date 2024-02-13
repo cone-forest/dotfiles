@@ -7,7 +7,7 @@ return require('packer').startup(function(use)
   -- dependencies
   use {'MunifTanjim/nui.nvim'}
   use {'nvim-lua/plenary.nvim'}
-  use {'nvim-telescope/telescope.nvim', tag = '0.1.2'}
+  use {'nvim-telescope/telescope.nvim'}
   use {'hrsh7th/vim-vsnip'}
 
   use {
@@ -86,7 +86,7 @@ return require('packer').startup(function(use)
 
   -- image preview
   -- use {'edluffy/hologram.nvim', rocks = {'magick'}}
-  -- use {'3rd/image.nvim'}
+  use {'3rd/image.nvim', rocks = {'magick'}}
   use {'m00qek/baleia.nvim'}
   use {'doctorfree/asciiart.nvim'}
 

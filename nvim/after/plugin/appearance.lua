@@ -41,7 +41,6 @@ require("noice").setup({
 
 local theme = rand_element({
   'themer_radium',
-  -- 'themer_shado',
 })
 vim.cmd('colorscheme ' .. theme)
 
