@@ -60,6 +60,12 @@ if [ -z "$resp" ] || [ "$resp" = "y" ]; then
   tmux source-file ~/.config/tmux/tmux.conf
 fi;
 
+# You wish to install tmux config?
+read -p "You wish to install kitty config? (Y/n) " resp
+if [ -z "$resp" ] || [ "$resp" = "y" ]; then
+  cp -r kitty ~/.config/
+fi;
+
 gum style \
 	--foreground 212 --border-foreground 212 --border double \
 	--align center --width 50 --margin "1 2" --padding "2 4" \
