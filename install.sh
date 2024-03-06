@@ -12,6 +12,8 @@ spinner_t=jump
 yay -S gum --noconfirm >> install.log
 
 # Get system packages
+# Install shell tools
+gum spin --spinner $spinner_t --title "Installing zoxide..." -- yay -S zoxide --noconfirm > install.log
 # Install programming tools
 gum spin --spinner $spinner_t --title "Installing git..." -- yay -S git --noconfirm > install.log
 
@@ -46,6 +48,11 @@ gum spin --spinner $spinner_t --title "Installing ascii-image-converter..." -- y
 gum spin --spinner $spinner_t --title "Installing packer..." -- git clone --depth 1 https://github.com/wbthomason/packer.nvim ~/.local/share/nvim/site/pack/packer/start/packer.nvim >> install.log
 gum spin --spinner $spinner_t --title "Installing tpm..." -- git clone --depth 1 https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 
+# Install adb
+gum spin --spinner $spinner_t --title "Installing adb..." -- yay -S android-tools scrcpy --noconfirm > install.log
+
+gum spin --spinner $spinner_t --title "Installing vpn..." -- yay -S wireguard resolvconf --noconfirm > install.log
+
 # You wish to install neovim config?
 read -p "You wish to install neovim config? (Y/n) " resp
 if [ -z "$resp" ] || [ "$resp" = "y" ]; then
@@ -66,7 +73,14 @@ if [ -z "$resp" ] || [ "$resp" = "y" ]; then
   cp -r kitty ~/.config/
 fi;
 
+# You wish to install tmux config?
+read -p "You wish to install zsh config? (Y/n) " resp
+if [ -z "$resp" ] || [ "$resp" = "y" ]; then
+  cat zsh.sh >> ~/.zshrc
+fi;
+
 gum style \
 	--foreground 212 --border-foreground 212 --border double \
 	--align center --width 50 --margin "1 2" --padding "2 4" \
-  'Done' 'Now you are cool ;)'
+  'Done' 'Now you are cool ;)' '(You can delete this directory)'
+
