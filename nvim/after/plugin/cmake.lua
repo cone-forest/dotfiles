@@ -1,7 +1,7 @@
 require("cmake-tools").setup {
   cmake_command = "cmake", -- this is used to specify cmake command path
   cmake_regenerate_on_save = true, -- auto generate when save CMakeLists.txt
-  cmake_generate_options = { "-DCMAKE_EXPORT_COMPILE_COMMANDS=1" }, -- this will be passed when invoke `CMakeGenerate`
+  cmake_generate_options = { "-G Ninja -DCMAKE_EXPORT_COMPILE_COMMANDS=1" }, -- this will be passed when invoke `CMakeGenerate`
   cmake_build_options = {}, -- this will be passed when invoke `CMakeBuild`
   cmake_build_directory = "build", -- this is used to specify generate directory for cmake
   cmake_build_directory_prefix = "cmake_build_", -- when cmake_build_directory is set to "", this option will be activated
