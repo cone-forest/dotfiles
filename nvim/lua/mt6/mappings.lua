@@ -27,8 +27,8 @@ vim.keymap.set('v', '<leader>p', '"+p')
 vim.keymap.set('n', '<leader>P', '"+P')
 
 -- splits
-vim.keymap.set('n', '<leader>S', '<cmd> split <CR>')
-vim.keymap.set('n', '<leader>V', '<cmd> vsplit <CR>')
+vim.keymap.set('n', '<leader>"', '<cmd> split <CR>')
+vim.keymap.set('n', '<leader>%', '<cmd> vsplit <CR>')
 
 -- tmux
 vim.keymap.set('n', '<C-h>', '<Cmd>NvimTmuxNavigateLeft<CR>')
