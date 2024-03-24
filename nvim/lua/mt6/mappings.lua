@@ -1,5 +1,5 @@
 -- explorer
-vim.keymap.set('n', '<leader>;', '<cmd> Explore <CR>')
+vim.keymap.set('n', '<leader>;', '<cmd> Telescope file_browser <CR>')
 
 -- quit & save
 vim.keymap.set('n', '<leader>q', '<cmd> q <CR>')

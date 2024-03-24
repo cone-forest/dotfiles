@@ -15,6 +15,9 @@ return require('packer').startup(function(use)
 	  {run = ':TSUpdate'},
   }
 
+  use {'nvim-telescope/telescope-file-browser.nvim'}
+  use {'nvim-telescope/telescope-frecency.nvim'}
+
   -- mason
   use {'williamboman/mason.nvim'}
 

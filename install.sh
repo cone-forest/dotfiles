@@ -13,7 +13,7 @@ yay -S gum --noconfirm >> install.log
 
 # Get system packages
 # Install shell tools
-gum spin --spinner $spinner_t --title "Installing zoxide..." -- yay -S zoxide --noconfirm > install.log
+gum spin --spinner $spinner_t --title "Installing zoxide..." -- yay -S fd ripgrep zoxide --noconfirm > install.log
 # Install programming tools
 gum spin --spinner $spinner_t --title "Installing git..." -- yay -S git --noconfirm > install.log
 
