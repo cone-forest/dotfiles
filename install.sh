@@ -57,7 +57,7 @@ gum spin --spinner $spinner_t --title "Installing vpn..." -- yay -S wireguard re
 read -p "You wish to install neovim config? (Y/n) " resp
 if [ -z "$resp" ] || [ "$resp" = "y" ]; then
   cp -r nvim ~/.config/
-  nvim -c PackerSync >> install.log
+  nvim -c PackerSync
 fi;
 
 # You wish to install tmux config?
@@ -70,13 +70,14 @@ fi;
 # You wish to install tmux config?
 read -p "You wish to install kitty config? (Y/n) " resp
 if [ -z "$resp" ] || [ "$resp" = "y" ]; then
+  git clone https://github.com/dexpota/kitty-themes.git ./kitty/kitty-themes
   cp -r kitty ~/.config/
 fi;
 
 # You wish to install tmux config?
 read -p "You wish to install zsh config? (Y/n) " resp
 if [ -z "$resp" ] || [ "$resp" = "y" ]; then
-  cat zsh.sh >> ~/.zshrc
+  cat zshrc >> ~/.zshrc
 fi;
 
 gum style \

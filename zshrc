@@ -1,3 +1,9 @@
+# ZSH_THEME="gozilla"
+# ZSH_THEME="cloud"
+# ZSH_THEME="apple"
+ZSH_THEME="af-magic"
+# ZSH_THEME="archcraft"
+
 eval "$(zoxide init zsh)"
 
 alias anime=ani-cli
@@ -7,6 +13,10 @@ alias open=xdg-open
 alias untar='tar -zxvf'
 alias mkdir='mkdir -pv'
 alias cd='z'
+
+alias vim=nvim
+alias vi=nvim
+alias nv=nvim
 
 alias l='ls -lh'
 alias la='ls -A'
