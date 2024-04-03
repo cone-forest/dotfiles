@@ -1,5 +1,0 @@
-vim.keymap.set('n', "<leader>g", '<cmd><CR>')
-vim.keymap.set('n', "<leader>b", '<cmd>VimtexCompile<CR>')
-vim.keymap.set('n', "<leader>G", '<cmd><CR>')
-vim.keymap.set('n', "<leader>B", '<cmd><CR>')
-vim.keymap.set('n', "<leader>R", '<cmd><CR>')

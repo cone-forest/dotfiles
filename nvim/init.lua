@@ -1,1 +1,1 @@
-require("mt6")
+require('mt6')

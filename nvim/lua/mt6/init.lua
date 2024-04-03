@@ -1,3 +1,3 @@
-require('mt6/sets')
-require('mt6/plugins')
-require('mt6/mappings')
+require('mt6.settings')
+require('mt6.lazy')
+require('mt6.keymaps')
