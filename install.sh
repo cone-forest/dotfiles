@@ -12,10 +12,11 @@ spinner_t=jump
 yay -S gum --noconfirm >> install.log
 
 # Get system packages
-# Install shell tools
-gum spin --spinner $spinner_t --title "Installing zoxide..." -- yay -S fd ripgrep zoxide --noconfirm > install.log
 # Install programming tools
 gum spin --spinner $spinner_t --title "Installing git..." -- yay -S git --noconfirm > install.log
+
+# Install shell tools
+gum spin --spinner $spinner_t --title "Installing shell tools..." -- yay -S wireguard wireguard-tools fd ripgrep zoxide kitty tmux --noconfirm > install.log
 
 # Install neovim
 gum spin --spinner $spinner_t --title "Installing neovim..." -- yay -S neovim --noconfirm > install.log
@@ -24,7 +25,7 @@ gum spin --spinner $spinner_t --title "Installing neovim..." -- yay -S neovim --
 gum spin --spinner $spinner_t --title "Installing lua..." -- yay -S lua luarocks lua-language-server --noconfirm >> install.log
 
 # c/cpp
-gum spin --spinner $spinner_t --title "Installing c/cpp tools..." -- yay -S llvm clang clangd lldb codelldb cmake cmake-language-server clang-format cmake-lint --noconfirm >> install.log
+gum spin --spinner $spinner_t --title "Installing c/cpp tools..." -- yay -S llvm clang clangd lldb codelldb ctags cmake cmake-language-server clang-format cmake-lint --noconfirm >> install.log
 
 # rust
 gum spin --spinner $spinner_t --title "Installing rustup..." -- yay -S rustup --noconfirm >> install.log
