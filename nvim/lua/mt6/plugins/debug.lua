@@ -1,104 +1,3 @@
---[[
-return {
-  {
-    'mfussenegger/nvim-dap',
-    lazy = true,
-    config = function()
-      local dap = require('dap')
-      dap.adapters = {
-        python = {
-          type = 'executable',
-          command = 'python',
-          args = { '-m', 'debugpy.adapter' },
-        },
-        codelldb = {
-          type = 'server',
-          port = '${port}',
-          executable = {
-            command = 'codelldb',
-            args = {'--port', '${port}'},
-          },
-        },
-        configurations = {
-          python = {{
-            name = 'debugpy',
-            type = 'python',
-            request = 'launch',
-            program = '${file}',
-          }},
-          go = {{type = 'go'}},
-          lua = {{type = 'lua'}},
-        },
-      }
-    end,
-  },
-  {
-    'rcarriga/nvim-dap-ui',
-    -- lazy = true,
-    dependencies = {
-      'mfussenegger/nvim-dap',
-      'nvim-telescope/telescope.nvim',
-      'nvim-telescope/telescope-dap.nvim',
-      'theHamsta/nvim-dap-virtual-text'
-    },
-    opts = {
-      layouts = {
-        {
-          elements = {
-            "watches",
-            { id = "scopes", size = 0.5 },
-            { id = "repl", size = 0.15 },
-          },
-          size = 79,
-          position = "left",
-        },
-        {
-          elements = {
-            "console",
-          },
-          size = 0.25,
-          position = "bottom",
-        },
-      },
-    },
-    config = function()
-      local dap = require('dap')
-      local dapui = require("dapui")
-      local telescope = require('telescope')
-      local daptext = require("nvim-dap-virtual-text")
-
-      vim.fn.sign_define("DapBreakpoint", { text = "●", texthl = "", linehl = "", numhl = "debugBreakpoint" })
-      vim.fn.sign_define("DapBreakpointCondition", { text = "◆", texthl = "", linehl = "", numhl = "debugBreakpoint" })
-      vim.fn.sign_define("DapStopped", { text = "▶", texthl = "", linehl = "", numhl = "debugPC" })
-
-      dap.defaults.fallback.force_external_terminal = true
-
-      dap.listeners.after.event_initialized.dapui_config = dapui.open
-      dap.listeners.before.event_terminated.dapui_config = dapui.close
-      dap.listeners.before.event_exited.dapui_config = dapui.close
-    end
-  },
-  {
-    'theHamsta/nvim-dap-virtual-text',
-    -- lazy = true,
-    opts = {},
-    dependencies = { 'mfussenegger/nvim-dap' },
-  },
-  {
-    'nvim-telescope/telescope-dap.nvim',
-    -- lazy = true,
-    opts = {},
-    dependencies = {
-      'nvim-telescope/telescope.nvim',
-      'mfussenegger/nvim-dap'
-    },
-    config = function()
-      require('telescope').load_extension('dap')
-    end
-  },
-}
---]]
-
 return {
   {
     "mfussenegger/nvim-dap",
@@ -141,13 +40,9 @@ return {
       },
       {
         'ay-babu/mason-nvim-dap.nvim',
-        dependencies = 'mason.nvim',
-        cmd = { 'DapInstall', 'DapUninstall' },
+        dependencies = { 'mason.nvim', 'cmake-tools.nvim', },
         opts = {
           automatic_installation = true,
-
-          -- You can provide additional configuration to the handlers,
-          -- see mason-nvim-dap README for more information
           handlers = {
             python = function(config)
               config.adapters = {
@@ -178,11 +73,17 @@ return {
                 type = "codelldb",
                 request = "launch",
                 program = function()
+                  print('here')
+                  local cmake = require('cmake-tools')
+                  if cmake.is_cmake_project() then
+                    return cmake.get_build_directory() .. cmake.get_launch_target()
+                  end
                   return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/build/', 'file')
                 end,
                 cwd = '${workspaceFolder}',
-                stopOnEntry = false,
+                stopOnEntry = true,
               }
+              config.configurations.codelldb = config.configurations.cpp
               require('mason-nvim-dap').default_setup(config) -- don't forget this!
             end,
             -- default setup

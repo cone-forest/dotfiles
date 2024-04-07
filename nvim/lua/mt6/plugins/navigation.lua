@@ -1,22 +1,32 @@
 return {
-  {'aserowy/tmux.nvim', opts = {}},
+  {
+    "christoomey/vim-tmux-navigator",
+    cmd = {
+      "TmuxNavigateLeft",
+      "TmuxNavigateDown",
+      "TmuxNavigateUp",
+      "TmuxNavigateRight",
+    },
+    keys = {
+      { "<c-h>", "<cmd><C-U>TmuxNavigateLeft<cr>" },
+      { "<c-j>", "<cmd><C-U>TmuxNavigateDown<cr>" },
+      { "<c-k>", "<cmd><C-U>TmuxNavigateUp<cr>" },
+      { "<c-l>", "<cmd><C-U>TmuxNavigateRight<cr>" },
+    },
+  },
   {
     'stevearc/oil.nvim',
     dependencies = { "nvim-tree/nvim-web-devicons" },
-    keys = { '<leader>;' },
-    config = function()
-      local oil = require('oil')
-      oil.setup({
-        float = {
-          padding = 0,
-          max_width = 55,
-          max_height = 18,
-          border = "rounded",
-          win_options = { winblend = 0, },
-        },
-      })
-      vim.keymap.set('n', '<leader>;', oil.toggle_float)
-    end
+    keys = { {'<leader>;', "<cmd>Oil --float<cr>"}, },
+    opts = {
+      float = {
+        padding = 0,
+        max_width = 55,
+        max_height = 18,
+        border = "rounded",
+        win_options = { winblend = 0, },
+      },
+    },
   },
   {
     'nvim-telescope/telescope.nvim',

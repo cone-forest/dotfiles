@@ -21,24 +21,7 @@ return {
       'ms-jpq/coq.artifacts',
       'williamboman/mason.nvim',
       'williamboman/mason-lspconfig.nvim',
-      {
-        'Civitasv/cmake-tools.nvim',
-        lazy = false,
-        keys = {
-          '<leader>g', '<leader>G',
-          '<leader>b', '<leader>B',
-          '<leader>R', '<leader>D',
-        },
-        config = function ()
-          require('cmake-tools').setup({})
-          vim.keymap.set('n', '<leader>g', '<cmd> CMakeGenerate <CR>')
-          vim.keymap.set('n', '<leader>b', '<cmd> CMakeBuild <CR>')
-          vim.keymap.set('n', '<leader>G', '<cmd> CMakeGenerate! <CR>')
-          vim.keymap.set('n', '<leader>B', '<cmd> CMakeBuild! <CR>')
-          vim.keymap.set('n', '<leader>R', '<cmd> CMakeRun <CR>')
-          vim.keymap.set('n', '<leader>D', '<cmd> CMakeDebug <CR>')
-        end
-      },
+      'Civitasv/cmake-tools.nvim',
     },
     config = function()
       local lsp = require('lspconfig')
@@ -54,6 +37,7 @@ return {
         vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, opts)
         vim.keymap.set("i", "<C-h>", vim.lsp.buf.signature_help, opts)
       end
+
       -- coq.clients.tabnine.enabled=true
       lsp.clangd.setup(coq.lsp_ensure_capabilities({
         on_attach = on_attach,
@@ -63,6 +47,7 @@ return {
         end,
       }))
       lsp.lua_ls.setup(coq.lsp_ensure_capabilities({
+        on_attach = on_attach,
         settings = {
           Lua = {
             diagnostics = { globals = { 'vim', 'require' }, },
