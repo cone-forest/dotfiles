@@ -29,6 +29,7 @@ ConfigureHueTheme = function()
   require('lualine').setup({})
 end
 
+-- required for external theme update
 vim.cmd('command! UpdateHueTheme :lua ConfigureHueTheme()')
 
 return {
@@ -37,7 +38,7 @@ return {
     dependencies = {
       'lualine.nvim'
     },
-    config = ConfigureHueTheme
+    config = ConfigureHueTheme,
   },
 }
 

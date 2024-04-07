@@ -1,6 +1,10 @@
 return {
   { 'ms-jpq/coq.artifacts', },
   {
+    'hrsh7th/nvim-cmp',
+    ft = 'tex',
+  },
+  {
     'neovim/nvim-lspconfig',
     -- event = 'BufEnter',
     config = function()

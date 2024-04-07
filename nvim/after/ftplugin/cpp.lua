@@ -1,0 +1,5 @@
+vim.keymap.set('n', "<leader>g", '<cmd> CMakeGenerate <CR>')
+vim.keymap.set('n', "<leader>b", '<cmd> CMakeBuild <CR>')
+vim.keymap.set('n', "<leader>G", '<cmd> CMakeGenerate! <CR>')
+vim.keymap.set('n', "<leader>B", '<cmd> CMakeBuild! <CR>')
+vim.keymap.set('n', "<leader>R", '<cmd> CMakeRun <CR>')
