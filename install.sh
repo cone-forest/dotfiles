@@ -19,7 +19,7 @@ gum spin --spinner $spinner_t --title "Installing git..." -- yay -S git --noconf
 gum spin --spinner $spinner_t --title "Installing shell tools..." -- yay -S wireguard wireguard-tools fd ripgrep zoxide kitty tmux --noconfirm > install.log
 
 # Install neovim
-gum spin --spinner $spinner_t --title "Installing neovim..." -- yay -S neovim --noconfirm > install.log
+gum spin --spinner $spinner_t --title "Installing neovim..." -- yay -S neovim neovim-remote --noconfirm > install.log
 
 # lua
 gum spin --spinner $spinner_t --title "Installing lua..." -- yay -S lua luarocks lua-language-server --noconfirm >> install.log
@@ -78,7 +78,6 @@ fi;
 # You wish to install tmux config?
 read -p "You wish to install zsh config? (Y/n) " resp
 if [ -z "$resp" ] || [ "$resp" = "y" ]; then
-  cat zshrc >> ~/.zshrc
 fi;
 
 gum style \
