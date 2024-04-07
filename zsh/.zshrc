@@ -9,6 +9,9 @@ plug "zsh-users/zsh-syntax-highlighting"
 autoload -Uz compinit
 compinit
 
+# keybindings
+bindkey '^ ' autosuggest-accept
+
 # env
 export ARCHFLAGS="-arch native"
 export PATH=$PATH:/home/michael/.cargo/bin
@@ -16,7 +19,6 @@ export QT_QPA_PLATFORM=wayland
 export EDITOR='nvim'
 
 # aliases
-
 alias l='ls -lh'
 alias la='ls -A'
 
