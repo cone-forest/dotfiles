@@ -6,5 +6,13 @@ return {
     },
   },
   { 'f-person/git-blame.nvim', },
+  {
+    'akinsho/git-conflict.nvim',
+    keys = {
+      {'<leader>gc', function() vim.cmd('GitConflictListQf') end}
+    },
+    config = true
+  },
+  { 'lewis6991/gitsigns.nvim' },
   { 'mbbill/undotree', },
 }

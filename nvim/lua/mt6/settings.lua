@@ -26,3 +26,6 @@ vim.opt.incsearch = true
 vim.opt.termguicolors = true
 
 vim.opt.scrolloff = 8
+
+-- highlight yanked
+vim.highlight.on_yank({higroup="IncSearch", timeout=700})

@@ -1,7 +1,11 @@
 return {
   {
-    'ntpeters/vim-better-whitespace',
+    'lukas-reineke/indent-blankline.nvim',
+    main = "ibl",
+    opts = {},
   },
+  { 'ntpeters/vim-better-whitespace', },
+  { 'nvim-tree/nvim-web-devicons' },
   {
     'nvim-treesitter/nvim-treesitter',
     event = 'BufEnter',
@@ -202,5 +206,4 @@ return {
       lualine.setup(config)
     end
   },
-  { 'nvim-tree/nvim-web-devicons' },
 }

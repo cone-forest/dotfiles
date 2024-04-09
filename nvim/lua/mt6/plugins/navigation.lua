@@ -1,5 +1,13 @@
 return {
   {
+    'smoka7/hop.nvim',
+    commands = 'HopWord',
+    keys = {
+      {'<leader>F', function() vim.cmd('HopWord') end},
+    },
+    opts = {},
+  },
+  {
     "christoomey/vim-tmux-navigator",
     cmd = {
       "TmuxNavigateLeft",
