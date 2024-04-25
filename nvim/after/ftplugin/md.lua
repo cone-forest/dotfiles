@@ -1,1 +1,1 @@
-vim.keymap.set('n', "<leader>b", '<cmd> MarkdownPreviewToggle <CR>')
+vim.keymap.set('n', "<leader>b", '<cmd>MarkdownPreview<CR>')

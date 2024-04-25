@@ -40,7 +40,10 @@ return {
       },
       {
         'ay-babu/mason-nvim-dap.nvim',
-        dependencies = { 'mason.nvim', 'cmake-tools.nvim', },
+        dependencies = {
+          { 'mason.nvim', opts = {} },
+          { 'cmake-tools.nvim' }
+        },
         opts = {
           automatic_installation = true,
           handlers = {

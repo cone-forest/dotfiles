@@ -1,11 +1,13 @@
 return {
-  {
-    'lukas-reineke/indent-blankline.nvim',
-    main = "ibl",
-    opts = {},
-  },
   { 'ntpeters/vim-better-whitespace', },
   { 'nvim-tree/nvim-web-devicons' },
+  { 'xiyaowong/transparent.nvim' },
+  {
+    "aznhe21/actions-preview.nvim",
+    config = function()
+      vim.keymap.set({ "v", "n" }, "gca", require("actions-preview").code_actions)
+    end,
+  },
   {
     'nvim-treesitter/nvim-treesitter',
     event = 'BufEnter',

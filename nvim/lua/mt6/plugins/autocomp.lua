@@ -27,7 +27,14 @@ return {
       'williamboman/mason-lspconfig.nvim',
       'Civitasv/cmake-tools.nvim',
     },
+    keys = {
+      'c-l',
+    },
     config = function()
+      vim.g.coq_settings = {
+        ['keymap.jump_to_mark'] = '<c-l>',
+      }
+
       local lsp = require('lspconfig')
       local coq = require('coq')
 
@@ -39,7 +46,7 @@ return {
         vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, opts)
         vim.keymap.set("n", "<leader>rf", vim.lsp.buf.references, opts)
         vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, opts)
-        vim.keymap.set("i", "<C-h>", vim.lsp.buf.signature_help, opts)
+        vim.keymap.set("i", "<c-h>", vim.lsp.buf.signature_help, opts)
       end
 
       -- coq.clients.tabnine.enabled=true

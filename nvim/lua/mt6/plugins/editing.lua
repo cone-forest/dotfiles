@@ -10,4 +10,8 @@ return {
 			mappings = { toggle = '' },
 		},
 	},
+  {
+    'jackMort/ChatGPT.nvim',
+    opts = {},
+  },
 }
