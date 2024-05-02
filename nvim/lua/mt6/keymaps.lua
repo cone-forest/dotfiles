@@ -26,4 +26,3 @@ vim.keymap.set('n', '<leader>P', '"+P')
 -- splits
 vim.keymap.set('n', '<leader>"', '<cmd> split <CR>')
 vim.keymap.set('n', '<leader>%', '<cmd> vsplit <CR>')
-
