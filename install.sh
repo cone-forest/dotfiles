@@ -39,7 +39,7 @@ gum spin --spinner $spinner_t --title "Installing python tools..." -- yay -S pyt
 gum spin --spinner $spinner_t --title "Installing golang tools..." -- yay -S go gopls --noconfirm >> install.log
 
 # Install document tools
-gum spin --spinner $spinner_t --title "Installing document tools..." -- yay -S texlive-langcyrillic texlive-xetex texlive-bin texlive-binextra texlive-latex texlive-latexextra texlive-luatex texlive-mathscience texlive-pictures texlive-revtex texlive-subfiles --noconfirm >> install.log
+gum spin --spinner $spinner_t --title "Installing document tools..." -- yay -S texlive-langcyrillic texlive-xetex texlive-bin texlive-binextra texlive-latex texlive-latexextra texlive-luatex texlive-mathscience texlive-pictures texlive-revtex texlive-subfiles texlive-fontsextra --noconfirm >> install.log
 
 gum spin --spinner $spinner_t --title "Installing markdown..." -- yay -S markdown --noconfirm >> install.log
 
