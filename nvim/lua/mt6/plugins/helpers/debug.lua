@@ -34,7 +34,7 @@ return {
       { "theHamsta/nvim-dap-virtual-text", },
       -- install DAPs and load default configurations
       {
-        'ay-babu/mason-nvim-dap.nvim',
+        'jay-babu/mason-nvim-dap.nvim',
         dependencies = {
           { 'mason.nvim', opts = {} },
           { 'cmake-tools.nvim' }
