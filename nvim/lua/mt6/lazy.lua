@@ -11,4 +11,11 @@ if not (vim.uv or vim.loop).fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
-require("lazy").setup("mt6.plugins")
+require("lazy").setup({
+  spec = {
+    { import = "mt6.plugins.cosmetic" },
+    { import = "mt6.plugins.helpers" },
+    { import = "mt6.plugins.languages" },
+    { import = "mt6.plugins.misc" },
+  }
+})

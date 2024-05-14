@@ -1,12 +1,25 @@
 return {
-  { 'ms-jpq/coq.artifacts', },
+  -- {
+  --   'hrsh7th/nvim-cmp',
+  --   ft = 'tex',
+  -- },
+  -- install LSPs and default configurations
   {
-    'hrsh7th/nvim-cmp',
-    ft = 'tex',
+    'williamboman/mason-lspconfig.nvim',
+    lazy = true,
+    opts = {
+      automatic_installation = true,
+      ensure_installed = {
+        "gopls", "pyright", "clangd", "lua_ls",
+      }
+    },
+    dependencies = {
+      { 'mason.nvim', opts = {} },
+    },
   },
+  -- load configurations
   {
     'neovim/nvim-lspconfig',
-    -- event = 'BufEnter',
     config = function()
       local lspconfig = require('lspconfig')
       lspconfig.rust_analyzer.setup({})
@@ -16,6 +29,9 @@ return {
       lspconfig.lua_ls.setup({})
     end
   },
+  -- whole lotta snippets
+  { 'ms-jpq/coq.artifacts', },
+  -- cmp.nvim but faster
   {
     'ms-jpq/coq_nvim',
     branch = 'coq',
@@ -26,6 +42,11 @@ return {
       'williamboman/mason.nvim',
       'williamboman/mason-lspconfig.nvim',
       'Civitasv/cmake-tools.nvim',
+      -- better LSP code actions
+      {
+        "aznhe21/actions-preview.nvim",
+        config = function() vim.keymap.set({ "v", "n" }, "<leader>ca", require("actions-preview").code_actions) end,
+      },
     },
     keys = {
       'c-l',
@@ -43,7 +64,7 @@ return {
 
         vim.keymap.set("n", "gdf", vim.lsp.buf.definition, opts)
         vim.keymap.set("n", "gdc", vim.lsp.buf.declaration, opts)
-        vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, opts)
+        -- vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, opts)
         vim.keymap.set("n", "<leader>rf", vim.lsp.buf.references, opts)
         vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, opts)
         vim.keymap.set("i", "<c-h>", vim.lsp.buf.signature_help, opts)

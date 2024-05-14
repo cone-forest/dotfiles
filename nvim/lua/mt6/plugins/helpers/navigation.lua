@@ -1,4 +1,7 @@
 return {
+  -- shows warnings/errors found by linter/lsp
+  {'folke/trouble.nvim', cmd = "Trouble"},
+  -- jump to character
   {
     'smoka7/hop.nvim',
     commands = 'HopWord',
@@ -7,6 +10,7 @@ return {
     },
     opts = {},
   },
+  -- switch between neovim/tmux panes seemlessly
   {
     "christoomey/vim-tmux-navigator",
     cmd = {
@@ -15,13 +19,13 @@ return {
       "TmuxNavigateUp",
       "TmuxNavigateRight",
     },
-    keys = {
-      { "<c-h>", "<cmd><C-U>TmuxNavigateLeft<cr>" },
+    keys = { { "<c-h>", "<cmd><C-U>TmuxNavigateLeft<cr>" },
       { "<c-j>", "<cmd><C-U>TmuxNavigateDown<cr>" },
       { "<c-k>", "<cmd><C-U>TmuxNavigateUp<cr>" },
       { "<c-l>", "<cmd><C-U>TmuxNavigateRight<cr>" },
     },
   },
+  -- better file tree
   {
     'stevearc/oil.nvim',
     dependencies = { "nvim-tree/nvim-web-devicons" },
@@ -36,10 +40,13 @@ return {
       },
     },
   },
+  -- fzf for neovim
   {
     'nvim-telescope/telescope.nvim',
     keys = {'<leader>ff', '<leader>fs', '<leader>fc'},
-    dependencies = { 'nvim-lua/plenary.nvim' },
+    dependencies = {
+      'nvim-lua/plenary.nvim',
+    },
     config = function()
       local builtin = require('telescope.builtin')
       vim.keymap.set('n', '<leader>ff', builtin.find_files)
@@ -47,6 +54,7 @@ return {
       vim.keymap.set('n', '<leader>fc', builtin.colorscheme)
     end
   },
+  -- faster file navigation
   {
     'ThePrimeagen/harpoon',
     branch = "harpoon2",
@@ -104,5 +112,4 @@ return {
       vim.keymap.set('n', '<leader>0', function() harpoon:list():select(4) end)
     end
   },
-  {'folke/trouble.nvim', cmd = "Trouble"}
 }

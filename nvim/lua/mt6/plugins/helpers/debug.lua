@@ -1,4 +1,5 @@
 return {
+  -- DAP settings
   {
     "mfussenegger/nvim-dap",
     lazy = true,
@@ -31,13 +32,7 @@ return {
         end,
       },
       { "theHamsta/nvim-dap-virtual-text", },
-      {
-        'nvim-telescope/telescope.nvim',
-        dependencies = {'nvim-telescope/telescope.nvim'},
-        config = function ()
-          require('telescope').load_extension('dap')
-        end,
-      },
+      -- install DAPs and load default configurations
       {
         'ay-babu/mason-nvim-dap.nvim',
         dependencies = {
@@ -71,12 +66,12 @@ return {
                   args = {'--port', '${port}'},
                 },
               }
+              -- TODO: this config is not applied, instead default one is used
               config.configurations.cpp = {
                 name = "Launch",
                 type = "codelldb",
                 request = "launch",
                 program = function()
-                  print('here')
                   local cmake = require('cmake-tools')
                   if cmake.is_cmake_project() then
                     return cmake.get_build_directory() .. cmake.get_launch_target()

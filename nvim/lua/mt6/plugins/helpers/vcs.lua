@@ -1,10 +1,12 @@
 return {
+  -- neovim git client
   {
     'kdheepak/lazygit.nvim',
     keys = {
       {'<leader>l', '<cmd> LazyGit <CR>'}
     },
   },
+  -- show git blame for current line
   { 'f-person/git-blame.nvim', },
   {
     'akinsho/git-conflict.nvim',
@@ -13,6 +15,8 @@ return {
     },
     config = true
   },
+  -- shows current file git state
   { 'lewis6991/gitsigns.nvim' },
-  { 'mbbill/undotree', },
+  -- shows tree of current file's changes in a tree
+  { 'mbbill/undotree' },
 }

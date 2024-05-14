@@ -1,4 +1,5 @@
 return {
+  -- neovim testing client
   {
     "nvim-neotest/neotest",
     dependencies = {
@@ -14,7 +15,6 @@ return {
       '<leader>tr',
       '<leader>td',
       '<leader>tm',
-      '<leader>tr',
     },
     config = function()
       local neotest = require('neotest')

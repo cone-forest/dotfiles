@@ -1,13 +1,7 @@
 return {
-  { 'ntpeters/vim-better-whitespace', },
+  -- special icons
   { 'nvim-tree/nvim-web-devicons' },
-  { 'xiyaowong/transparent.nvim' },
-  {
-    "aznhe21/actions-preview.nvim",
-    config = function()
-      vim.keymap.set({ "v", "n" }, "gca", require("actions-preview").code_actions)
-    end,
-  },
+  -- highlighting
   {
     'nvim-treesitter/nvim-treesitter',
     event = 'BufEnter',
@@ -21,11 +15,12 @@ return {
         auto_install = true,
         highlight = {
           enable = true,
-          additional_vim_regex_highlighting = false,
+          additional_vim_regex_highlighting = true,
         },
       })
     end
   },
+  -- startpage
   {
     'goolord/alpha-nvim',
     opts = {
@@ -38,21 +33,20 @@ return {
             position = 'center',
           },
         },
-        {type = 'padding', val = 30,},
+        {type = 'padding', val = 47,},
       },
     },
   },
+  -- beautiful UI
   {
     "folke/noice.nvim",
     event = "VeryLazy",
     opts = {},
     dependencies = { "MunifTanjim/nui.nvim", }
   },
+  -- the rest of file is lualine config
   {
     'nvim-lualine/lualine.nvim',
-    dependencies = {
-      'mini.hues',
-    },
     config = function()
       local lualine = require('lualine')
       local conditions = {
