@@ -91,4 +91,22 @@ return {
       vim.cmd('COQnow -s')
     end
   },
+  {
+    'ms-jpq/coq.thirdparty',
+    config = function()
+      require("coq_3p") {
+        { src = "nvimlua", short_name = "nLUA" },
+        -- { src = "vimtex",  short_name = "vTEX" },
+        {
+          src = "repl",
+          sh = "zsh",
+          shell = { p = "python", n = "node"},
+          max_lines = 99,
+          deadline = 500,
+          unsafe = { "rm", "poweroff", "mv", "reboot"}
+        },
+        { src = "bc", short_name = "MATH", precision = 6 },
+      }
+    end
+  }
 }

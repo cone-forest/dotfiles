@@ -1,7 +1,7 @@
 return {
   {
     "iamcco/markdown-preview.nvim",
-    ft = { 'md', },
+    event = VeryLazy,
     config = function() vim.fn["mkdp#util#install"]() end,
   },
 }

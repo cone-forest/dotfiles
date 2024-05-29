@@ -49,7 +49,6 @@ return {
     config = function()
       vim.g.coq_settings = {
         ['keymap.jump_to_mark'] = '<c-l>',
-        ['clients.tabnine.enabled'] = true,
       }
 
       local lsp = require('lspconfig')
