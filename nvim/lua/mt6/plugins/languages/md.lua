@@ -1,3 +1,5 @@
+vim.g.mkdp_browser = 'surf'
+
 return {
   {
     "iamcco/markdown-preview.nvim",
