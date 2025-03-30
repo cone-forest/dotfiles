@@ -31,6 +31,8 @@ return {
     dependencies = { "nvim-tree/nvim-web-devicons" },
     keys = { {'<leader>;', "<cmd>Oil --float<cr>"}, },
     opts = {
+      skip_confirm_for_simple_edits = true,
+      natural_order = true,
       float = {
         padding = 0,
         max_width = 55,

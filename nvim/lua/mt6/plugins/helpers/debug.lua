@@ -42,7 +42,11 @@ return {
         opts = {
           automatic_installation = true,
           handlers = {
+            function(config)
+              require('mason-nvim-dap').default_setup(config)
+            end,
             python = function(config)
+              config.name = 'debugpy'
               config.adapters = {
                 type = 'executable',
                 command = 'python',
@@ -59,34 +63,38 @@ return {
             end,
             codelldb = function(config)
               config.adapters = {
-                type = 'server',
-                port = '${port}',
-                executable = {
-                  command = 'codelldb',
-                  args = {'--port', '${port}'},
-                },
+                {
+                  type = 'server',
+                  port = '${port}',
+                  executable = {
+                    command = 'codelldb',
+                    args = {'--port', '${port}'},
+                  },
+                }
               }
               -- TODO: this config is not applied, instead default one is used
-              config.configurations.cpp = {
-                name = "Launch",
-                type = "codelldb",
-                request = "launch",
-                program = function()
-                  local cmake = require('cmake-tools')
-                  if cmake.is_cmake_project() then
-                    return cmake.get_build_directory() .. cmake.get_launch_target()
-                  end
-                  return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/build/', 'file')
-                end,
-                cwd = '${workspaceFolder}',
-                stopOnEntry = true,
+              config.configurations.codelldb = {
+                {
+                  name = "Launch",
+                  type = "codelldb",
+                  request = "launch",
+                  program = function()
+                    local cmake = require('cmake-tools')
+                    if cmake.is_cmake_project() then
+                      return cmake.get_build_directory() .. cmake.get_launch_target()
+                    else
+                      return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/build/', 'file')
+                    end
+                  end,
+                  cwd = '${workspaceFolder}',
+                  args = function()
+                    return vim.split(vim.fn.input('Args: '), ' +', { trimempty = true })
+                  end,
+                  console = 'integratedTerminal',
+                  stopOnEntry = true,
+                }
               }
-              config.configurations.codelldb = config.configurations.cpp
               require('mason-nvim-dap').default_setup(config) -- don't forget this!
-            end,
-            -- default setup
-            function(config)
-              require('mason-nvim-dap').default_setup(config)
             end,
           },
           ensure_installed = {

@@ -1,11 +1,4 @@
 return {
-  -- neovim git client
-  {
-    'kdheepak/lazygit.nvim',
-    keys = {
-      {'<leader>l', '<cmd> LazyGit <CR>'}
-    },
-  },
   -- show git blame for current line
   { 'f-person/git-blame.nvim', },
   {

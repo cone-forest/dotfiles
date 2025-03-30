@@ -27,6 +27,13 @@ return {
       lspconfig.pyright.setup({})
       lspconfig.gopls.setup({})
       lspconfig.lua_ls.setup({})
+      lspconfig.matlab.setup({})
+      lspconfig.cmake.setup({
+        on_attach = function(client, _)
+          client.server_capabilities.documentFormattingProvider = false
+          client.server_capabilities.documentRangeFormattingProvider = false
+        end,
+      })
     end
   },
   -- whole lotta snippets

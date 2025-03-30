@@ -12,4 +12,16 @@ return {
     },
     opts = {},
   },
+  {
+    'stevearc/vim-arduino',
+    commands = {
+      'ArduinoVerify',
+      'ArduinoAttach',
+      'ArduinoUpload',
+      'ArduinoChooseBoard',
+      'ArduinoAttach',
+      'ArduinoAttach',
+      'ArduinoInfo',
+    },
+  }
 }

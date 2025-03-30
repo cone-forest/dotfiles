@@ -28,7 +28,14 @@ vim.opt.termguicolors = true
 vim.opt.scrolloff = 8
 
 -- highlight yanked
-vim.highlight.on_yank({higroup="IncSearch", timeout=700})
+vim.api.nvim_create_autocmd('TextYankPost', {
+  group = vim.api.nvim_create_augroup('highlight_yank', {}),
+  desc = 'Hightlight selection on yank',
+  pattern = '*',
+  callback = function()
+    vim.highlight.on_yank { higroup = 'IncSearch', timeout = 47 }
+  end,
+})
 
 vim.opt.spell = true
-vim.opt.spelllang = "en_us"
+vim.opt.spelllang = "en_us,ru"
