@@ -26,3 +26,9 @@ vim.keymap.set('n', '<leader>P', '"+P')
 -- splits
 vim.keymap.set('n', '<leader>"', '<cmd> split <CR>')
 vim.keymap.set('n', '<leader>%', '<cmd> vsplit <CR>')
+
+-- diagnostics
+vim.keymap.set('n', 'L', vim.diagnostic.open_float)
+
+-- code actions
+vim.keymap.set({ 'v', 'n' }, '<leader>ca', require('actions-preview').code_actions)

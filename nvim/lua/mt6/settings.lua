@@ -5,6 +5,9 @@ vim.g.mapleader = ' '
 vim.opt.nu = true
 vim.opt.relativenumber = true
 
+-- default browser
+vim.g.mkdp_browser = 'surf'
+
 -- indenting
 vim.opt.tabstop = 2
 vim.opt.softtabstop = 2
@@ -39,3 +42,6 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 
 vim.opt.spell = true
 vim.opt.spelllang = "en_us,ru"
+
+-- rounded corners
+vim.opt.winborder = "rounded"
