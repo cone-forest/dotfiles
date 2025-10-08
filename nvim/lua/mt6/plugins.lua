@@ -13,6 +13,7 @@ vim.pack.add({
   { src = 'https://github.com/goolord/alpha-nvim', },
   { src = 'https://github.com/mbbill/undotree' },
   { src = 'https://github.com/cbochs/grapple.nvim', },
+  { src = 'https://github.com/folke/trouble.nvim', },
 })
 
 -- colorscheme configuration
@@ -93,6 +94,8 @@ vim.api.nvim_create_autocmd('LspAttach', {
   end,
 })
 vim.cmd('set completeopt+=noselect')
+
+require('trouble').setup({})
 
 vim.keymap.set('n', "<leader>a", "<cmd>Grapple toggle<cr>")
 vim.keymap.set('n', "<leader>h", "<cmd>Grapple toggle_tags<cr>")
