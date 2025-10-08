@@ -9,7 +9,10 @@ vim.pack.add({
   { src = 'https://github.com/folke/tokyonight.nvim', },
   { src = 'https://github.com/iamcco/markdown-preview.nvim', },
   { src = 'https://github.com/aznhe21/actions-preview.nvim', },
-  -- { src = 'https://github.com/ThePrimeagen/harpoon', version = 'harpoon2', },
+  { src = 'https://github.com/christoomey/vim-tmux-navigator', },
+  { src = 'https://github.com/goolord/alpha-nvim', },
+  { src = 'https://github.com/mbbill/undotree' },
+  { src = 'https://github.com/cbochs/grapple.nvim', },
 })
 
 -- colorscheme configuration
@@ -29,55 +32,22 @@ require('oil').setup({
 })
 vim.keymap.set('n', '<leader>;', '<cmd>Oil --float<cr>')
 
+vim.keymap.set('n', '<c-h>', '<cmd>TmuxNavigateLeft<cr>')
+vim.keymap.set('n', '<c-j>', '<cmd>TmuxNavigateDown<cr>')
+vim.keymap.set('n', '<c-k>', '<cmd>TmuxNavigateUp<cr>')
+vim.keymap.set('n', '<c-l>', '<cmd>TmuxNavigateRight<cr>')
+
 -- fuzzy finder (telescope) configuration
 local builtin = require('telescope.builtin')
 vim.keymap.set('n', '<leader>ff', builtin.find_files)
 vim.keymap.set('n', '<leader>fs', builtin.live_grep)
-
--- harpoon configuration
--- local conf = require("telescope.config").values
--- local function toggle_telescope(harpoon_files)
---   local file_paths = {}
---   for _, item in ipairs(harpoon_files.items) do
---     table.insert(file_paths, item.value)
---   end
--- 
---   require("telescope.pickers").new({}, {
---     prompt_title = "Harpoon",
---     finder = require("telescope.finders").new_table({
---       results = file_paths,
---     }),
---     previewer = conf.file_previewer({}),
---     sorter = conf.generic_sorter({}),
---   }):find()
--- end
---
--- require('telescope').load_extension('harpoon')
--- local harpoon = require('harpoon')
--- harpoon:setup({
---   settings = {
---     save_on_toggle = true,
---     sync_on_ui_close = true,
---     key = function()
---       return vim.loop.cwd()
---     end,
---   }
--- })
---
--- vim.keymap.set('n', '<leader>a', function() harpoon:list():add() end)
--- vim.keymap.set('n', '<leader>h', function() harpoon.ui:toggle_quick_menu(harpoon:list()) end)
--- vim.keymap.set('n', '<leader>fh', function() toggle_telescope(harpoon:list()) end)
---
--- vim.keymap.set('n', '<leader>1', function() harpoon:list():select(1) end)
--- vim.keymap.set('n', '<leader>2', function() harpoon:list():select(2) end)
--- vim.keymap.set('n', '<leader>9', function() harpoon:list():select(3) end)
--- vim.keymap.set('n', '<leader>0', function() harpoon:list():select(4) end)
 
 -- LSP configuration
 vim.lsp.enable({
   'lua_ls',
   'clangd',
   'texlab',
+  'pylsp'
 })
 vim.lsp.config('lua_ls', {
   settings = {
@@ -88,6 +58,31 @@ vim.lsp.config('lua_ls', {
     }
   }
 })
+vim.lsp.config('slangd', {
+  settings = {
+    slang = {
+      inlayHints = {
+        deducedTypes = true,
+        parameterNames = true,
+      }
+    }
+  }
+})
+vim.lsp.config('pylsp', {})
+
+local lsp = require('lspconfig')
+
+local on_attach = function(_, bufnr)
+  local opts = {buffer = bufnr, remap = false}
+
+  vim.keymap.set("n", "gdf", vim.lsp.buf.definition, opts)
+  vim.keymap.set("n", "gdc", vim.lsp.buf.declaration, opts)
+  vim.keymap.set("n", "<leader>rf", vim.lsp.buf.references, opts)
+  vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, opts)
+  vim.keymap.set("i", "<c-h>", vim.lsp.buf.signature_help, opts)
+end
+
+lsp.clangd.setup({ on_attach = on_attach, })
 
 vim.api.nvim_create_autocmd('LspAttach', {
   callback = function(ev)
@@ -99,11 +94,39 @@ vim.api.nvim_create_autocmd('LspAttach', {
 })
 vim.cmd('set completeopt+=noselect')
 
+vim.keymap.set('n', "<leader>a", "<cmd>Grapple toggle<cr>")
+vim.keymap.set('n', "<leader>h", "<cmd>Grapple toggle_tags<cr>")
+vim.keymap.set('n', "<leader>1", "<cmd>Grapple select index=1<cr>")
+vim.keymap.set('n', "<leader>2", "<cmd>Grapple select index=2<cr>")
+vim.keymap.set('n', "<leader>9", "<cmd>Grapple select index=3<cr>")
+vim.keymap.set('n', "<leader>0", "<cmd>Grapple select index=4<cr>")
+vim.keymap.set('n', "<leader>3", "<cmd>Grapple select index=5<cr>")
+vim.keymap.set('n', "<leader>8", "<cmd>Grapple select index=6<cr>")
+vim.keymap.set('n', "<c-s-n>", "<cmd>Grapple cycle_tags next<cr>")
+vim.keymap.set('n', "<c-s-p>", "<cmd>Grapple cycle_tags prev<cr>")
+
 -- Tree Sitter configuration
 require('nvim-treesitter.configs').setup({
-  ensure_installed = { 'c', 'cpp', 'glsl', 'slang', 'lua', },
+  ensure_installed = { 'c', 'cpp', 'glsl', 'slang', 'lua', 'python', 'sql', 'go' },
   highlight = { enable = true, },
 })
 
 -- Markdown Preview configuration
 vim.fn["mkdp#util#install"]()
+
+-- Start page
+require('alpha').setup({
+  layout = {
+    {type = 'padding', val = 20,},
+    {
+      type = 'text',
+      val = 'ᓚᘏᗢ',
+      opts = {
+        position = 'center',
+      },
+    },
+    {type = 'padding', val = 47,},
+  },
+})
+
+vim.keymap.set('n', '<leader>u', '<cmd>UndotreeToggle<cr>')
