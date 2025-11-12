@@ -14,6 +14,7 @@ vim.pack.add({
   { src = 'https://github.com/mbbill/undotree' },
   { src = 'https://github.com/cbochs/grapple.nvim', },
   { src = 'https://github.com/folke/trouble.nvim', },
+  { src = 'https://github.com/j-hui/fidget.nvim', },
 })
 
 -- colorscheme configuration
@@ -31,12 +32,12 @@ require('oil').setup({
     win_options = { winblend = 0, },
   },
 })
-vim.keymap.set('n', '<leader>;', '<cmd>Oil --float<cr>')
+vim.keymap.set('n', '<leader>;', '<cmd> Oil --float <cr>')
 
-vim.keymap.set('n', '<c-h>', '<cmd>TmuxNavigateLeft<cr>')
-vim.keymap.set('n', '<c-j>', '<cmd>TmuxNavigateDown<cr>')
-vim.keymap.set('n', '<c-k>', '<cmd>TmuxNavigateUp<cr>')
-vim.keymap.set('n', '<c-l>', '<cmd>TmuxNavigateRight<cr>')
+vim.keymap.set('n', '<c-h>', '<cmd> TmuxNavigateLeft <cr>')
+vim.keymap.set('n', '<c-j>', '<cmd> TmuxNavigateDown <cr>')
+vim.keymap.set('n', '<c-k>', '<cmd> TmuxNavigateUp <cr>')
+vim.keymap.set('n', '<c-l>', '<cmd> TmuxNavigateRight <cr>')
 
 -- fuzzy finder (telescope) configuration
 local builtin = require('telescope.builtin')
@@ -97,16 +98,16 @@ vim.cmd('set completeopt+=noselect')
 
 require('trouble').setup({})
 
-vim.keymap.set('n', "<leader>a", "<cmd>Grapple toggle<cr>")
-vim.keymap.set('n', "<leader>h", "<cmd>Grapple toggle_tags<cr>")
-vim.keymap.set('n', "<leader>1", "<cmd>Grapple select index=1<cr>")
-vim.keymap.set('n', "<leader>2", "<cmd>Grapple select index=2<cr>")
-vim.keymap.set('n', "<leader>9", "<cmd>Grapple select index=3<cr>")
-vim.keymap.set('n', "<leader>0", "<cmd>Grapple select index=4<cr>")
-vim.keymap.set('n', "<leader>3", "<cmd>Grapple select index=5<cr>")
-vim.keymap.set('n', "<leader>8", "<cmd>Grapple select index=6<cr>")
-vim.keymap.set('n', "<c-s-n>", "<cmd>Grapple cycle_tags next<cr>")
-vim.keymap.set('n', "<c-s-p>", "<cmd>Grapple cycle_tags prev<cr>")
+vim.keymap.set('n', "<leader>a", "<cmd> Grapple toggle          <cr>")
+vim.keymap.set('n', "<leader>h", "<cmd> Grapple toggle_tags     <cr>")
+vim.keymap.set('n', "<leader>1", "<cmd> Grapple select index=1  <cr>")
+vim.keymap.set('n', "<leader>2", "<cmd> Grapple select index=2  <cr>")
+vim.keymap.set('n', "<leader>9", "<cmd> Grapple select index=3  <cr>")
+vim.keymap.set('n', "<leader>0", "<cmd> Grapple select index=4  <cr>")
+vim.keymap.set('n', "<leader>3", "<cmd> Grapple select index=5  <cr>")
+vim.keymap.set('n', "<leader>8", "<cmd> Grapple select index=6  <cr>")
+vim.keymap.set('n', "<c-s-n>",   "<cmd> Grapple cycle_tags next <cr>")
+vim.keymap.set('n', "<c-s-p>",   "<cmd> Grapple cycle_tags prev <cr>")
 
 -- Tree Sitter configuration
 require('nvim-treesitter.configs').setup({
@@ -132,4 +133,4 @@ require('alpha').setup({
   },
 })
 
-vim.keymap.set('n', '<leader>u', '<cmd>UndotreeToggle<cr>')
+vim.keymap.set('n', '<leader>u', '<cmd> UndotreeToggle <cr>')

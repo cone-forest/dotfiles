@@ -32,3 +32,7 @@ vim.keymap.set('n', 'L', vim.diagnostic.open_float)
 
 -- code actions
 vim.keymap.set({ 'v', 'n' }, '<leader>ca', require('actions-preview').code_actions)
+
+--formatting
+vim.keymap.set('n', '<leader>=', vim.lsp.buf.format)
+
